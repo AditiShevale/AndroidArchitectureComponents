@@ -35,18 +35,17 @@ public class WordRespository {
 
     private class insertAsyncTask extends AsyncTask<Word,Void,Void> {
 
-
+        private WordDao mAsyncTaskDao;
 
         public insertAsyncTask(WordDao mWordDao) {
-
+            mAsyncTaskDao = mWordDao;
         }
 
-        public void execute(Word word) {
 
-        }
 
         @Override
-        protected Void doInBackground(Word... words) {
+        protected Void doInBackground(Word... params) {
+            mAsyncTaskDao.insert(params[0]);
             return null;
         }
     }
