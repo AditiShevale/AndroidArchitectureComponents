@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,7 +57,8 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        mWordViewModel = ViewModelProviders.of(this).get(WordViewModel.class);
+        mWordViewModel = ViewModelProviders.of(this)
+                .get(WordViewModel.class);
 
         mWordViewModel.getAllWords().observe(this, new Observer<List<Word>>() {
             @Override
@@ -67,5 +67,6 @@ public class MainActivity extends AppCompatActivity {
                 adapter.setWords(words);
             }
         });
-}
+    }
+
 }

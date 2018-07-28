@@ -26,6 +26,8 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter
     }
 
 
+
+
     WordListAdapter(Context context ){
         mInflater = LayoutInflater.from(context);
 //        mListener = clickListener;
@@ -52,6 +54,11 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter
         if (mWords != null)
             return mWords.size();
         else return 0;
+    }
+
+    void setWords(List<Word> words) {
+        mWords = words;
+        notifyDataSetChanged();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
