@@ -14,14 +14,21 @@ import java.util.List;
 
 public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter
         .MyViewHolder> {
-
+//    private final RecyclerViewClickListener mListener;
     private LayoutInflater mInflater;
     private List<Word> mWords;
+
+
     // Cached copy of words
 
+    public interface RecyclerViewClickListener{
+        void onClick(Word word);
+    }
 
-    WordListAdapter(Context context){
+
+    WordListAdapter(Context context ){
         mInflater = LayoutInflater.from(context);
+//        mListener = clickListener;
     }
 
     @NonNull
@@ -47,13 +54,21 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter
         else return 0;
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private TextView wordItemView;
 
         public MyViewHolder(View itemView) {
             super(itemView);
             wordItemView = itemView.findViewById(R.id.txt_custom);
+        }
+
+        @Override
+        public void onClick(View v) {
+            int adapterPosition = getAdapterPosition();
+            Word word= mWords.get(adapterPosition);
+//            mListener.onClick(word);
+
         }
     }
 
