@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.aditishevale.androidarchitecturecomponents.Database.Word;
 
@@ -32,19 +33,27 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+        Word current = mWords.get(position);
+        holder.wordItemView.setText(current.getWord());
+        //setting the tag to retrive it in the delete
+        holder.itemView.setTag(current.getId());
 
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        if (mWords != null)
+            return mWords.size();
+        else return 0;
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
+        private TextView wordItemView;
 
         public MyViewHolder(View itemView) {
             super(itemView);
+            wordItemView = itemView.findViewById(R.id.txt_custom);
         }
     }
 
