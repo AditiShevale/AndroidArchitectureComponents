@@ -26,11 +26,9 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter
     }
 
 
-
-
     WordListAdapter(Context context ){
         mInflater = LayoutInflater.from(context);
-//        mListener = clickListener;
+
     }
 
     @NonNull
@@ -61,7 +59,8 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter
         notifyDataSetChanged();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class MyViewHolder extends RecyclerView.ViewHolder implements
+            View.OnClickListener {
 
         private TextView wordItemView;
 
@@ -74,7 +73,7 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter
         public void onClick(View v) {
             int adapterPosition = getAdapterPosition();
             Word word= mWords.get(adapterPosition);
-//            mListener.onClick(word);
+
 
         }
     }
